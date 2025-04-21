@@ -7,7 +7,8 @@ export const StoreContext = createContext(null)
 const StoreContextProvider = (props) => {
 
     const [cartitems,setcartitems] = useState({});
-    const url = import.meta.env.MODE === "development" ? "http://localhost:4000" : "/"
+    const url = import.meta.env.PROD ? "" : "http://localhost:4000";
+
     const [token,settoken] = useState("");
     const [food_list,setfoodlist] = useState([])
 

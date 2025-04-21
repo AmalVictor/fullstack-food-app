@@ -18,7 +18,8 @@ const __dirname = path.dirname(__filename);
 
 //app config
 const app = express()
-const port = 4000
+const port = process.env.PORT || 4000;
+
 
 
 
@@ -36,7 +37,7 @@ app.use("/api/user", userrouter)
 app.use("/api/cart",cartrouter)
 app.use("/api/order",orderrouter)
 
-if(process.env.NODE_ENV="production") {
+if(process.env.NODE_ENV==="production") {
      app.use(express.static(path.join(__dirname, "../frontend/dist")));
     
     
