@@ -8,13 +8,18 @@ import cartrouter from "./routes/cartroute.js"
 import orderrouter from "./routes/orderroute.js"
 
 import path from 'path'
+import { fileURLToPath } from "url";
+
+// Fix __dirname in ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 
 
 //app config
 const app = express()
 const port = 4000
-const __dirname = path.resolve()
+
 
 
 //middleware
@@ -32,7 +37,7 @@ app.use("/api/cart",cartrouter)
 app.use("/api/order",orderrouter)
 
 if(process.env.NODE_ENV="production") {
-     app.use(express.static(path.join(_dirname, "../frontend/dist")));
+     app.use(express.static(path.join(__dirname, "../frontend/dist")));
     
     
      app.get("*", (req, res) => {
